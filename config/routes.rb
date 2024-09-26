@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   get("/square_root/new", { :controller => "omni", :action => "nsquare_root" })
   get("/square_root/results", { :controller => "omni", :action => "rsquare_root" })
 
+  get("/payment/new", { :controller => "omni", :action => "npayment" })
+  get("/payment/results", { :controller => "omni", :action => "rpayment" })
 
-  # get("/payment/new", { :controller => "omni", :action => "payment" })
 
   # get("/random/new", { :controller => "omni", :action => "random" })
   

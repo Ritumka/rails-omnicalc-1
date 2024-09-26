@@ -10,7 +10,6 @@ class OmniController < ApplicationController
     render({ :template => "results/square_result" })
   end
 
-
   def nsquare_root
     render({ :template => "new/square_root_new" })
   end
@@ -22,32 +21,26 @@ class OmniController < ApplicationController
     render({ :template => "results/square_root_result" })
   end
 
+  def npayment
+    render({ :template => "new/payment_new" })
+  end
+
+  def rpayment
+    @apr = params.fetch("user_apr").to_f
+    @years = params.fetch("user_years").to_f
+    @pv = params.fetch("user_pv").to_f
+
+    r = (@apr / 100) / 12
+    n = @years * 12
+
+    numerator = r * @pv
+    denominator = 1 - (1 + r) ** -n
+
+    @payment = numerator / denominator
+
+    render({ :template => "results/payment_result" })
+  end
 end
-
-
-
-
-# get("/payment/new") do
-#   erb(:payment_new)
-
-# end
-
-# get("/payment/results") do
-#   @apr = params.fetch("user_apr").to_f
-#   @years = params.fetch("user_years").to_f
-#   @pv = params.fetch("user_pv").to_f
-
-#   r = (@apr / 100) / 12
-#   n = @years * 12
-
-#   numerator = r * @pv
-#   denominator = 1 - (1 + r) ** -n
-
-#   @payment = numerator / denominator
-
-#   erb(:payment_results)
-
-# end
 
 # get("/random/new") do
 
