@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get("/payment/results", { :controller => "omni", :action => "rpayment" })
 
 
-  # get("/random/new", { :controller => "omni", :action => "random" })
-  
+  get("/random/new", { :controller => "omni", :action => "nrandom" })
+  get("/random/results", { :controller => "omni", :action => "rrandom" })  
 
   get("/", { :controller => "omni", :action => "nsquare" })
   

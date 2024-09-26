@@ -40,20 +40,17 @@ class OmniController < ApplicationController
 
     render({ :template => "results/payment_result" })
   end
+
+  def nrandom
+    render({ :template => "new/random_new" })
+  end
+
+  def rrandom
+    @min = params.fetch("user_min").to_f
+    @max = params.fetch("user_max").to_f
+    @random_number = rand(@min..@max)
+
+    render({ :template => "results/random_result" })
+  end
+
 end
-
-# get("/random/new") do
-
-#   erb(:random_new)
-
-# end
-
-# get("/random/results") do
-#   @min = params.fetch("user_min").to_f
-#   @max = params.fetch("user_max").to_f
-
-#   @random_number =rand(@min..@max)
-
-#   erb(:random_results)
-
-# end
